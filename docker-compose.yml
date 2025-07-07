@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:15
+    container_name: lakaa_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: backend_development
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile_Lakaa_Backend
+    container_name: lakaa_backend
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:password@db:5432/backend_development
+      RAILS_ENV: development
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile_Lakaa_Frontend
+    container_name: lakaa_frontend
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - "3001:3000"
+
+volumes:
+  postgres_data:

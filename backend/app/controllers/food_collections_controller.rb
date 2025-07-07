@@ -1,0 +1,51 @@
+class FoodCollectionsController < ApplicationController
+  before_action :set_food_collection, only: %i[ show update destroy ]
+
+  # GET /food_collections
+  def index
+    @food_collections = FoodCollection.all
+
+    render json: @food_collections
+  end
+
+  # GET /food_collections/1
+  def show
+    render json: @food_collection
+  end
+
+  # POST /food_collections
+  def create
+    @food_collection = FoodCollection.new(food_collection_params)
+
+    if @food_collection.save
+      render json: @food_collection, status: :created, location: @food_collection
+    else
+      render json: @food_collection.errors, status: :unprocessable_entity
+    end
+  end
+
+  # PATCH/PUT /food_collections/1
+  def update
+    if @food_collection.update(food_collection_params)
+      render json: @food_collection
+    else
+      render json: @food_collection.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /food_collections/1
+  def destroy
+    @food_collection.destroy!
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_food_collection
+      @food_collection = FoodCollection.find(params.expect(:id))
+    end
+
+    # Only allow a list of trusted parameters through.
+    def food_collection_params
+      params.expect(food_collection: [ :collect_date, :association_name ])
+    end
+end
