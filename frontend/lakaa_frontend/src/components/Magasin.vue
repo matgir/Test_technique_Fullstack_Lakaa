@@ -64,56 +64,61 @@
 </template>
 
 <script>
+import { ref, reactive } from 'vue'
 import axios from 'axios'
 
 export default {
   name: 'Magasin',
-  data () {
-    return {
-      newCollection: {
-        association_name: '',
-        collect_date: '',
-        description: ''
-      },
-      loading: false,
-      message: '',
-      messageClass: ''
-    }
-  },
-  methods: {
-    createFoodCollection () {
-      this.loading = true
-      this.message = ''
+  setup() {
+    const newCollection = reactive({
+      association_name: '',
+      collect_date: '',
+      description: ''
+    })
+    const loading = ref(false)
+    const message = ref('')
+    const messageClass = ref('')
+
+    const createFoodCollection = () => {
+      loading.value = true
+      message.value = ''
 
       const collectionData = {
         food_collection: {
-          association_name: this.newCollection.association_name,
-          collect_date: this.newCollection.collect_date,
-          description: this.newCollection.description
+          association_name: newCollection.association_name,
+          collect_date: newCollection.collect_date,
+          description: newCollection.description
         }
       }
 
-      axios.post('http://localhost:3000/food_collections', collectionData)
+      axios.post('http://0.0.0.0:3000/food_collections', collectionData)
         .then(response => {
-          this.message = 'Collecte de denrées alimentaires créée avec succès !'
-          this.messageClass = 'success'
-          this.resetForm()
-          this.loading = false
+          message.value = 'Collecte de denrées alimentaires créée avec succès !'
+          messageClass.value = 'success'
+          resetForm()
+          loading.value = false
         })
         .catch(error => {
-          this.message = 'Erreur lors de la création de la collecte.'
-          this.messageClass = 'error'
+          message.value = 'Erreur lors de la création de la collecte.'
+          messageClass.value = 'error'
           console.error(error)
-          this.loading = false
+          loading.value = false
         })
-    },
+    }
 
-    resetForm () {
-      this.newCollection = {
-        association_name: '',
-        collect_date: '',
-        description: ''
-      }
+    const resetForm = () => {
+      newCollection.association_name = ''
+      newCollection.collect_date = ''
+      newCollection.description = ''
+    }
+
+    return {
+      newCollection,
+      loading,
+      message,
+      messageClass,
+      createFoodCollection,
+      resetForm
     }
   }
 }

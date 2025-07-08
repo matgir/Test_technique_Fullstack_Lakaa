@@ -20,24 +20,29 @@
 </template>
 
 <script>
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
 export default {
   name: 'FoodCollection',
-  data () {
+  setup() {
+    const food_collections = ref([])
+    const error = ref([])
+
+    onMounted(() => {
+      axios.get('http://0.0.0.0:3000/food_collections')
+        .then(response => {
+          food_collections.value = response.data
+        })
+        .catch(e => {
+          error.value.push(e)
+        })
+    })
+
     return {
-      food_collections: [],
-      error: []
+      food_collections,
+      error
     }
-  },
-  created () {
-    axios.get('http://0.0.0.0:3000/food_collections')
-      .then(response => {
-        this.food_collections = response.data
-      })
-      .catch(e => {
-        this.error.push(e)
-      })
   }
 }
 </script>

@@ -1,27 +1,29 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import FoodCollections from '@/components/FoodCollection'
-import Magasin from '@/components/Magasin'
+import { createRouter, createWebHistory } from 'vue-router'
+import HelloWorld from '@/components/HelloWorld.vue'
+import FoodCollections from '@/components/FoodCollection.vue'
+import Magasin from '@/components/Magasin.vue'
 
-Vue.use(Router)
+const routes = [
+  {
+    path: '/',
+    name: 'HelloWorld',
+    component: HelloWorld
+  },
+  {
+    path: '/food-collections',
+    name: 'FoodCollections',
+    component: FoodCollections
+  },
+  {
+    path: '/magasin',
+    name: 'Magasin',
+    component: Magasin
+  }
+]
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/food-collections',
-      name: 'FoodCollections',
-      component: FoodCollections
-    },
-    {
-      path: '/magasin',
-      name: 'Magasin',
-      component: Magasin
-    }
-  ]
+const router = createRouter({
+  history: createWebHistory(),
+  routes
 })
+
+export default router
