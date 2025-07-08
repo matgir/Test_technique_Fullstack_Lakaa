@@ -46,6 +46,7 @@ class FoodCollectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def food_collection_params
-      params.expect(food_collection: [ :collect_date, :association_name ])
+      # params.expect(food_collection: [ :collect_date, :association_name ])
+      params.expect(food_collection: [ :collect_date, :association_name, :description ])
     end
 end

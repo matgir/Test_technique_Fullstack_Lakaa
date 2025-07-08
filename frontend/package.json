@@ -1,0 +1,19 @@
+{
+	"name": "lakaa-frontend",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "vite --host 0.0.0.0 --port 8080",
+		"build": "vite build",
+		"preview": "vite preview",
+		"serve": "vite --host 0.0.0.0 --port 8080"
+	},
+	"dependencies": {
+		"vue": "^3.0.0",
+		"vue-router": "^4.2.0"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^4.2.0",
+		"vite": "^4.3.0"
+	}
+}

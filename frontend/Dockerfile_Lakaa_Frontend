@@ -1,14 +1,26 @@
 FROM node:20-alpine
 
-WORKDIR /frontend
+# WORKDIR /frontend
 
 # COPY package*.json ./
 
-# RUN npm install
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 COPY . .
 
-EXPOSE 3000
+WORKDIR /frontend
 
-# CMD ["npm", "run", "serve"]
-CMD ["tail", "-f", "/dev/null"]
+RUN npm install
+
+RUN npm install -g vue-cli
+
+EXPOSE 8080
+
+WORKDIR /frontend/lakaa_frontend
+
+RUN npm install
+
+RUN npm install axios@0.27.2
+
+CMD ["npm", "run", "dev"]
+# CMD ["tail", "-f", "/dev/null"]

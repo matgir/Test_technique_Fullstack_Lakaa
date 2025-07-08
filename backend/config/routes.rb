@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :food_collections
+  resources :food_collections, only: [:index, :show, :create, :update, :destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -8,4 +8,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # this is in order for both the containers to communicate with each other
+  if Rails.env.development?
+  end
 end

@@ -19,7 +19,7 @@ fi
 # Check if FoodCollection model exists, if not generate scaffold
 if ! rails runner "FoodCollection" 2>/dev/null; then
   echo "Generating FoodCollection scaffold..."
-  rails generate scaffold FoodCollection collect_date:date association_name:string
+  rails generate scaffold FoodCollection collect_date:date association_name:string description:text
 fi
 
 # Run migrations
