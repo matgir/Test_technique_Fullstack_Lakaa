@@ -1,16 +1,38 @@
-Lakaa test technique
+# Lakaa – Test Technique
 
-make : lancer le projet par le biais du make file et du docker-compose
+## Lancement du projet
 
-make stop : arreter les containers
+Utilisez les commandes `make` suivantes pour interagir avec le projet via le `Makefile` et `docker-compose` :
 
-make restart : arreter puis relancer les containers
+- `make` : Lancer le projet.
+- `make stop` : Arrêter les conteneurs.
+- `make restart` : Arrêter puis relancer les conteneurs.
+- `make rebuildstart` : Arrêter, reconstruire, puis relancer les conteneurs.
+- `make prune` : Supprimer tous les contenus créés par les conteneurs.
+- `make reprunestart` : Supprimer les contenus, reconstruire, puis relancer les conteneurs.
 
-make rebuildstart : arreter, build de nouveau et lancer les containers
+> ⚠️ **Attention** :  
+> Les commandes contenant `prune` arrêtent tous les conteneurs de la machine hôte.  
+> Assurez-vous de ne pas avoir d'autres conteneurs en cours d’exécution que vous souhaitez conserver.
 
-make prune :	effacer tout les contenus creer par les containers
-make reprunestart :	effacer tout les contenus creer par les containers et build de nouveau ainsi que lancer les containers
+---
 
-command contenant "prune" : utiliser avec attention car arrete l'entiereter des containers sur la machines hote, verifier si vous n'en avez pas d'autre qui tourne que vous aineriez conserver
+## Accès à l’application
 
-http://localhost:8080 : acceder à l'application
+Une fois le message suivant affiché dans les logs du conteneur `lakaa_backend` :  
+**`Use Ctrl-C to stop`**
+
+📍 Accédez à l’application à l’adresse suivante :  
+[http://localhost:8080]
+
+---
+
+## Pages disponibles
+
+### 🥕 Food Collection  
+Page destinée au responsable RSE. Elle permet de consulter les données liées aux collectes.
+
+### 🏬 Magasin  
+Page destinée au responsable de magasin pour enregistrer les actions de collecte de denrées alimentaires.
+
+---
