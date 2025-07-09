@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :indicator_names
+  resources :indicator_values
   resources :food_collections, only: [:index, :show, :create, :update, :destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

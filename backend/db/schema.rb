@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_08_093134) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_09_145805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -21,4 +21,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_093134) do
     t.datetime "updated_at", null: false
     t.text "description"
   end
+
+  create_table "indicator_names", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "indicator_values", force: :cascade do |t|
+    t.string "value"
+    t.bigint "indicator_name_id", null: false
+    t.bigint "food_collection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_collection_id"], name: "index_indicator_values_on_food_collection_id"
+    t.index ["indicator_name_id"], name: "index_indicator_values_on_indicator_name_id"
+  end
+
+  add_foreign_key "indicator_values", "food_collections"
+  add_foreign_key "indicator_values", "indicator_names"
 end

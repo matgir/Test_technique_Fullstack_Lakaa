@@ -43,8 +43,8 @@
       <br>
 
       <div class="form-actions">
-        <button type="submit">
-          Ajouter la collecte
+        <button type="submit" :disabled="loading">
+          Ajouter collecte
         </button>
       </div>
 
@@ -91,19 +91,21 @@ export default {
         }
       }
 
-      axios.post('http://0.0.0.0:3000/food_collections', collectionData)
-        .then(response => {
-          message.value = 'Collecte de denrées alimentaires créée avec succès !'
-          messageClass.value = 'success'
-          resetForm()
-          loading.value = false
-        })
-        .catch(error => {
-          message.value = 'Erreur lors de la création de la collecte.'
-          messageClass.value = 'error'
-          console.error(error)
-          loading.value = false
-        })
+      if (loading.value == true) {
+        axios.post('http://0.0.0.0:3000/food_collections', collectionData)
+          .then(response => {
+            message.value = 'Collecte de denrées alimentaires créée avec succès !'
+            messageClass.value = 'success'
+            resetForm()
+            loading.value = false
+          })
+          .catch(error => {
+            message.value = 'Erreur lors de la création de la collecte.'
+            messageClass.value = 'error'
+            console.error(error)
+            loading.value = false
+          })
+      }
     }
 
     const resetForm = () => {
