@@ -3,3 +3,5 @@ class FoodCollection < ApplicationRecord
 	validates :collect_date, presence: true
 	validates :description, length: { maximum: 500 }
 end
+
+##@## where the FoodCollection model is defined with its attributes

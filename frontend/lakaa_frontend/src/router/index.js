@@ -27,3 +27,5 @@ const router = createRouter({
 })
 
 export default router
+
+// ##@## the logic of the SPA is done here, create the web history for the back and forward arrows

@@ -123,3 +123,6 @@ export default {
   }
 }
 </script>
+
+<!-- what the user see going on the magasin page
+ it also contains the logic to send the information back to the API -->

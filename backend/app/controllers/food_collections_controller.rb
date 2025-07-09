@@ -50,3 +50,9 @@ class FoodCollectionsController < ApplicationController
       params.expect(food_collection: [ :collect_date, :association_name, :description ])
     end
 end
+
+##@## creates API endpoints for FoodCollection model and deal with the request sent by the frontend
+# This controller handles the CRUD operations for food collections, including listing, showing, creating, updating, and deleting food collections.
+# It uses strong parameters to ensure only allowed attributes are processed.
+# The controller also handles errors and returns appropriate HTTP status codes.
+# created atomatically by the Rails generator command `rails generate scaffold FoodCollection collect_date:date association_name:string description:text`

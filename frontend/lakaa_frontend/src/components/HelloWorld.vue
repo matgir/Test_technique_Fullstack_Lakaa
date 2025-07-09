@@ -32,3 +32,5 @@ a {
   color: #42b983;
 }
 </style>
+
+<!-- ##@## modified automaticaly created vue to make some king of home page -->

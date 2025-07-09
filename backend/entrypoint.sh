@@ -28,3 +28,5 @@ rails db:migrate
 
 # Execute the main command
 exec "$@"
+
+##@## script to launch the backend server after the db creation and then create the needed models

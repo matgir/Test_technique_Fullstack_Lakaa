@@ -46,3 +46,6 @@ export default {
   }
 }
 </script>
+
+<!-- what the user see going on the magasin page
+ it also contains the logic to get the information from the API -->

@@ -17,3 +17,5 @@ RUN npm install axios@0.27.2
 EXPOSE 8080
 
 CMD ["npm", "run", "dev"]
+
+##@## install all dependencies for the frontend using Vue CLI and Axios

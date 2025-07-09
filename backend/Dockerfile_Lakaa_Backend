@@ -25,3 +25,4 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
 
+##@## install all needed dependencies for db communication and rails working in this container
